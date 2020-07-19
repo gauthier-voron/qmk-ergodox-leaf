@@ -85,221 +85,266 @@
 #define COL_SYSSAFE  ((uint8_t[3]) {  80 , 155 , 255 })
 
 
-/*
- * ===== Layer 0 : Base ========================================================================================================================================
- */
+#define LBASE            0
+#define LSYMB            1
+#define LNUMB            2
+#define LMOUS            3
+#define LNAVG            4
+#define LFUNC            5
+#define LSYST            6
 
-#define L0_LROW_0    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_MEDIA_PLAY_PAUSE
-#define L0_LROW_1    KC_TAB,         KC_COMMA,       KC_DOT,         KC_SCOLON,      KC_P,           KC_Y,           KC_MEDIA_NEXT_TRACK
-#define L0_LROW_2    KC_MINUS,       LALT_T(KC_A),   LSFT_T(KC_O),   LCTL_T(KC_E),   LT(2, KC_U),    LGUI_T(KC_I)
-#define L0_LROW_3    KC_CAPSLOCK,    KC_SLASH,       KC_Q,           KC_J,           KC_K,           KC_X,           KC_MEDIA_PREV_TRACK
-#define L0_LROW_4    KC_ASON,        KC_QUOTE,       KC_GRAVE,       KC_LBRACKET,    KC_RBRACKET
-
-#define L0_LRGB_0                    COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
-#define L0_LRGB_1                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_LETTER,     COL_LETTER
-#define L0_LRGB_2                    COL_MOD,        COL_MOD,        COL_MOD,        COL_MODLT,      COL_MOD
-#define L0_LRGB_3                    COL_SYMBOL,     COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER
-#define L0_LRGB_4                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
-
-#define L0_LTHM_0                    DYN_MACRO_PLAY1,DYN_MACRO_PLAY2
-#define L0_LTHM_1                                    KC_INSERT
-#define L0_LTHM_2    KC_SPACE,       KC_TAB,         TT(4)
-
-#define L0_RROW_0    KC_AUDIO_MUTE,  KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_DELETE
-#define L0_RROW_1    KC_AUDIO_VOL_UP,KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_BSPACE
-#define L0_RROW_2                    RGUI_T(KC_D),   LT(1,KC_H),     RCTL_T(KC_T),   RSFT_T(KC_N),   RALT_T(KC_S),   KC_EQUAL
-#define L0_RROW_3    KC_AUDIO_VOL_DOWN,KC_B,         KC_M,           KC_W,           KC_V,           KC_Z,           KC_BSLASH
-#define L0_RROW_4                                    KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ASOFF
-
-#define L0_RRGB_0                    COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
-#define L0_RRGB_1                    COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER
-#define L0_RRGB_2                    COL_MOD,        COL_MODLT,      COL_MOD,        COL_MOD,        COL_MOD
-#define L0_RRGB_3                    COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER
-#define L0_RRGB_4                                    COL_NAVIG,      COL_NAVIG,      COL_NAVIG,      COL_NAVIG
-
-#define L0_RTHM_0    KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
-#define L0_RTHM_1    KC_PSCREEN
-#define L0_RTHM_2    TT(3),          KC_BSPACE,      KC_ENTER
 
 /*
- * ===== Layer 1 : Symbols (left) ==============================================================================================================================
+ * ===== Layer Base ============================================================================================================================================
  */
 
-#define L1_LROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L1_LROW_1    KC_TRANSPARENT, KC_TRANSPARENT, KC_AT,          KC_HASH,        KC_PERC,        KC_TRANSPARENT, KC_TRANSPARENT
-#define L1_LROW_2    KC_TRANSPARENT, KC_EXLM,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_EQUAL
-#define L1_LROW_3    KC_TRANSPARENT, KC_BSLASH,      KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_MINUS,       KC_TRANSPARENT
-#define L1_LROW_4    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LBRACKET,    KC_RBRACKET
+#define LBASE_LROW_0    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_MEDIA_PLAY_PAUSE
+#define LBASE_LROW_1    KC_TAB,         KC_COMMA,       KC_DOT,         KC_SCOLON,      KC_P,           KC_Y,           KC_MEDIA_NEXT_TRACK
+#define LBASE_LROW_2    KC_MINUS,       LALT_T(KC_A),   LCTL_T(KC_O),   LSFT_T(KC_E),   LT(LNAVG,KC_U), KC_I
+#define LBASE_LROW_3    KC_CAPSLOCK,    KC_SLASH,       LGUI_T(KC_Q),   KC_J,           LT(LNUMB,KC_K), KC_X,           KC_MEDIA_PREV_TRACK
+#define LBASE_LROW_4    KC_ASON,        KC_QUOTE,       KC_GRAVE,       KC_LBRACKET,    KC_RBRACKET
 
-#define L1_LRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
-#define L1_LRGB_1                    COL_DISABLE,    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_DISABLE
-#define L1_LRGB_2                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
-#define L1_LRGB_3                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
-#define L1_LRGB_4                    COL_DISABLE,    COL_DISABLE,     COL_SYMBOL,     COL_SYMBOL
+#define LBASE_LRGB_0                    COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
+#define LBASE_LRGB_1                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_LETTER,     COL_LETTER
+#define LBASE_LRGB_2                    COL_MOD,        COL_MOD,        COL_MOD,        COL_MODLT,      COL_LETTER
+#define LBASE_LRGB_3                    COL_SYMBOL,     COL_MOD,        COL_LETTER,     COL_MODLT,      COL_LETTER
+#define LBASE_LRGB_4                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
 
-#define L1_LTHM_0                    DYN_REC_START1, DYN_REC_START2
-#define L1_LTHM_1                                    DYN_REC_STOP
-#define L1_LTHM_2    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LBASE_LTHM_0                    DYN_MACRO_PLAY1,DYN_MACRO_PLAY2
+#define LBASE_LTHM_1                                    KC_INSERT
+#define LBASE_LTHM_2    KC_SPACE,       KC_TAB,         TT(LFUNC)
 
-#define L1_RROW_0    L0_RROW_0
-#define L1_RROW_1    L0_RROW_1
-#define L1_RROW_2    L0_RROW_2
-#define L1_RROW_3    L0_RROW_3
-#define L1_RROW_4    L0_RROW_4
+#define LBASE_RROW_0    KC_AUDIO_MUTE,  KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_DELETE
+#define LBASE_RROW_1    KC_AUDIO_VOL_UP,KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_BSPACE
+#define LBASE_RROW_2                    KC_D,           LT(LSYMB,KC_H), RSFT_T(KC_T),   RCTL_T(KC_N),   LALT_T(KC_S),   KC_EQUAL
+#define LBASE_RROW_3    KC_AUDIO_VOL_DOWN,KC_B,         LT(LMOUS,KC_M), RALT_T(KC_W),   RGUI_T(KC_V),   KC_Z,           KC_BSLASH
+#define LBASE_RROW_4                                    KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ASOFF
 
-#define L1_RRGB_0    L0_RRGB_0
-#define L1_RRGB_1    L0_RRGB_1
-#define L1_RRGB_2    L0_RRGB_2
-#define L1_RRGB_3    L0_RRGB_3
-#define L1_RRGB_4    L0_RRGB_4
+#define LBASE_RRGB_0                    COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
+#define LBASE_RRGB_1                    COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER,     COL_LETTER
+#define LBASE_RRGB_2                    COL_LETTER,     COL_MODLT,      COL_MOD,        COL_MOD,        COL_MOD
+#define LBASE_RRGB_3                    COL_LETTER,     COL_MODLT,      COL_MOD,        COL_MOD,        COL_LETTER
+#define LBASE_RRGB_4                                    COL_NAVIG,      COL_NAVIG,      COL_NAVIG,      COL_NAVIG
 
-#define L1_RTHM_0    L0_RTHM_0
-#define L1_RTHM_1    L0_RTHM_1
-#define L1_RTHM_2    L0_RTHM_2
+#define LBASE_RTHM_0    KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP
+#define LBASE_RTHM_1    KC_PSCREEN
+#define LBASE_RTHM_2    KC_DELETE,      KC_BSPACE,      KC_ENTER
 
 /*
- * ===== Layer 2 : Numbers (right) =============================================================================================================================
+ * ===== Layer Symbols (left) ==================================================================================================================================
  */
 
-#define L2_LROW_0    L0_LROW_0
-#define L2_LROW_1    L0_LROW_1
-#define L2_LROW_2    L0_LROW_2
-#define L2_LROW_3    L0_LROW_3
-#define L2_LROW_4    L0_LROW_4
+#define LSYMB_LROW_0    KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT
+#define LSYMB_LROW_1    KC_TRANSPARENT, KC_NO,          KC_AT,          KC_HASH,        KC_PERC,        KC_NO,          KC_TRANSPARENT
+#define LSYMB_LROW_2    KC_TRANSPARENT, KC_EXLM,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_QUOTE
+#define LSYMB_LROW_3    KC_TRANSPARENT, KC_NO,          KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_GRAVE,       KC_TRANSPARENT
+#define LSYMB_LROW_4    KC_TRANSPARENT, KC_NO,          KC_NO,          KC_LBRACKET,    KC_RBRACKET
 
-#define L2_LRGB_0    L0_LRGB_0
-#define L2_LRGB_1    L0_LRGB_1
-#define L2_LRGB_2    L0_LRGB_2
-#define L2_LRGB_3    L0_LRGB_3
-#define L2_LRGB_4    L0_LRGB_4
+#define LSYMB_LRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LSYMB_LRGB_1                    COL_DISABLE,    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_DISABLE
+#define LSYMB_LRGB_2                    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
+#define LSYMB_LRGB_3                    COL_DISABLE,    COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL,     COL_SYMBOL
+#define LSYMB_LRGB_4                    COL_DISABLE,    COL_DISABLE,    COL_SYMBOL,     COL_SYMBOL
 
-#define L2_LTHM_0    L0_LTHM_0
-#define L2_LTHM_1    L0_LTHM_1
-#define L2_LTHM_2    L0_LTHM_2
+#define LSYMB_LTHM_0                    DYN_REC_START1, DYN_REC_START2
+#define LSYMB_LTHM_1                                    DYN_REC_STOP
+#define LSYMB_LTHM_2    KC_SPACE,       KC_TAB,         KC_NO
 
-#define L2_RROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L2_RROW_1    KC_TRANSPARENT, KC_PGUP,        KC_7,           KC_8,           KC_9,           KC_PLUS,        KC_EQUAL
-#define L2_RROW_2                    KC_HOME,        KC_1,           KC_2,           KC_3,           KC_0,           KC_END
-#define L2_RROW_3    KC_TRANSPARENT, KC_PGDOWN,      KC_4,           KC_5,           KC_6,           KC_MINUS,       KC_SLASH
-#define L2_RROW_4                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LSYMB_RROW_0    LBASE_RROW_0
+#define LSYMB_RROW_1    LBASE_RROW_1
+#define LSYMB_RROW_2    LBASE_RROW_2
+#define LSYMB_RROW_3    LBASE_RROW_3
+#define LSYMB_RROW_4    LBASE_RROW_4
 
-#define L2_RRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
-#define L2_RRGB_1                    COL_NAVIG,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_SYMBOL
-#define L2_RRGB_2                    COL_NAVIG,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
-#define L2_RRGB_3                    COL_NAVIG,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_SYMBOL
-#define L2_RRGB_4                                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LSYMB_RRGB_0    LBASE_RRGB_0
+#define LSYMB_RRGB_1    LBASE_RRGB_1
+#define LSYMB_RRGB_2    LBASE_RRGB_2
+#define LSYMB_RRGB_3    LBASE_RRGB_3
+#define LSYMB_RRGB_4    LBASE_RRGB_4
 
-#define L2_RTHM_0    KC_TRANSPARENT, KC_TRANSPARENT
-#define L2_RTHM_1    KC_TRANSPARENT
-#define L2_RTHM_2    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LSYMB_RTHM_0    LBASE_RTHM_0
+#define LSYMB_RTHM_1    LBASE_RTHM_1
+#define LSYMB_RTHM_2    LBASE_RTHM_2
 
 /*
- * ===== Layer 3 : Mouse (left) ================================================================================================================================
+ * ===== Layer Numbers (right) =================================================================================================================================
  */
 
-#define L3_LROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L3_LROW_1    KC_MS_ACCEL2,   KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT
-#define L3_LROW_2    KC_MS_ACCEL1,   KC_MS_WH_LEFT,  KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT
-#define L3_LROW_3    KC_MS_ACCEL0,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_TRANSPARENT, KC_TRANSPARENT
-#define L3_LROW_4    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LNUMB_LROW_0    LBASE_LROW_0
+#define LNUMB_LROW_1    LBASE_LROW_1
+#define LNUMB_LROW_2    LBASE_LROW_2
+#define LNUMB_LROW_3    LBASE_LROW_3
+#define LNUMB_LROW_4    LBASE_LROW_4
 
-#define L3_LRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
-#define L3_LRGB_1                    COL_DISABLE,    COL_DISABLE,    COL_MOUSE,      COL_MOUSEX,     COL_DISABLE
-#define L3_LRGB_2                    COL_MOUSEX,     COL_MOUSE,      COL_MOUSE,      COL_MOUSE,      COL_MOUSEX
-#define L3_LRGB_3                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_MOUSEX,     COL_DISABLE
-#define L3_LRGB_4                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LNUMB_LRGB_0    LBASE_LRGB_0
+#define LNUMB_LRGB_1    LBASE_LRGB_1
+#define LNUMB_LRGB_2    LBASE_LRGB_2
+#define LNUMB_LRGB_3    LBASE_LRGB_3
+#define LNUMB_LRGB_4    LBASE_LRGB_4
 
-#define L3_LTHM_0                    KC_TRANSPARENT, KC_MS_BTN5
-#define L3_LTHM_1                                    KC_MS_BTN4
-#define L3_LTHM_2    KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3
+#define LNUMB_LTHM_0    LBASE_LTHM_0
+#define LNUMB_LTHM_1    LBASE_LTHM_1
+#define LNUMB_LTHM_2    LBASE_LTHM_2
 
-#define L3_RROW_0    L0_RROW_0
-#define L3_RROW_1    L0_RROW_1
-#define L3_RROW_2    L0_RROW_2
-#define L3_RROW_3    L0_RROW_3
-#define L3_RROW_4    L0_RROW_4
+#define LNUMB_RROW_0    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+#define LNUMB_RROW_1    KC_NO,          KC_LBRACKET,    KC_7,           KC_8,           KC_9,           KC_PLUS,        KC_ASTR
+#define LNUMB_RROW_2                    KC_DOT,         KC_1,           KC_2,           KC_3,           KC_0,           KC_EQUAL
+#define LNUMB_RROW_3    KC_NO,          KC_RBRACKET,    KC_4,           KC_5,           KC_6,           KC_MINUS,       KC_SLASH
+#define LNUMB_RROW_4                                    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
 
-#define L3_RRGB_0    L0_RRGB_0
-#define L3_RRGB_1    L0_RRGB_1
-#define L3_RRGB_2    L0_RRGB_2
-#define L3_RRGB_3    L0_RRGB_3
-#define L3_RRGB_4    L0_RRGB_4
+#define LNUMB_RRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LNUMB_RRGB_1                    COL_SYMBOL,     COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_SYMBOL
+#define LNUMB_RRGB_2                    COL_SYMBOL,     COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_DIGIT
+#define LNUMB_RRGB_3                    COL_SYMBOL,     COL_DIGIT,      COL_DIGIT,      COL_DIGIT,      COL_SYMBOL
+#define LNUMB_RRGB_4                                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
 
-#define L3_RTHM_0    L0_RTHM_0
-#define L3_RTHM_1    L0_RTHM_1
-#define L3_RTHM_2    L0_RTHM_2
+#define LNUMB_RTHM_0    KC_NO,          KC_NO
+#define LNUMB_RTHM_1    KC_NO
+#define LNUMB_RTHM_2    KC_NO,          KC_NO,          KC_NO
 
 /*
- * ===== Layer 4 : Functions (right) ===========================================================================================================================
+ * ===== Layer Navigation (right) ==============================================================================================================================
  */
 
-#define L4_LROW_0    L0_LROW_0
-#define L4_LROW_1    L0_LROW_1
-#define L4_LROW_2    L0_LROW_2
-#define L4_LROW_3    L0_LROW_3
-#define L4_LROW_4    L0_LROW_4
+#define LNAVG_LROW_0    LBASE_LROW_0
+#define LNAVG_LROW_1    LBASE_LROW_1
+#define LNAVG_LROW_2    LBASE_LROW_2
+#define LNAVG_LROW_3    LBASE_LROW_3
+#define LNAVG_LROW_4    LBASE_LROW_4
 
-#define L4_LRGB_0    L0_LRGB_0
-#define L4_LRGB_1    L0_LRGB_1
-#define L4_LRGB_2    L0_LRGB_2
-#define L4_LRGB_3    L0_LRGB_3
-#define L4_LRGB_4    L0_LRGB_4
+#define LNAVG_LRGB_0    LBASE_LRGB_0
+#define LNAVG_LRGB_1    LBASE_LRGB_1
+#define LNAVG_LRGB_2    LBASE_LRGB_2
+#define LNAVG_LRGB_3    LBASE_LRGB_3
+#define LNAVG_LRGB_4    LBASE_LRGB_4
 
-#define L4_LTHM_0    L0_LTHM_0
-#define L4_LTHM_1    L0_LTHM_1
-#define L4_LTHM_2    L0_LTHM_2
+#define LNAVG_LTHM_0    LBASE_LTHM_0
+#define LNAVG_LTHM_1    LBASE_LTHM_1
+#define LNAVG_LTHM_2    LBASE_LTHM_2
 
-#define L4_RROW_0    KC_TRANSPARENT, RGB_TOG,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L4_RROW_1    KC_TRANSPARENT, RGB_SLD,        KC_F7,          KC_F8,          KC_F9,          KC_F12,         KC_TRANSPARENT
-#define L4_RROW_2                    RGB_MOD,        KC_F1,          KC_F2,          KC_F3,          KC_F10,         KC_TRANSPARENT
-#define L4_RROW_3    KC_TRANSPARENT, TOGGLE_LAYER_COLOR,KC_F4,       KC_F5,          KC_F6,          KC_F11,         KC_TRANSPARENT
-#define L4_RROW_4                                    RGB_HUD,        RGB_VAD,        RGB_VAI,        RGB_HUI,        KC_TRANSPARENT
+#define LNAVG_RROW_0    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+#define LNAVG_RROW_1    KC_NO,          KC_NO,          KC_PGUP,        KC_UP,          KC_NO,          KC_NO,          KC_NO
+#define LNAVG_RROW_2                    KC_HOME,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_END,         KC_NO
+#define LNAVG_RROW_3    KC_NO,          KC_NO,          KC_PGDOWN,      KC_NO,          KC_NO,          KC_NO,          KC_NO
+#define LNAVG_RROW_4                                    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
 
-#define L4_RRGB_0                    COL_RGB,        COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
-#define L4_RRGB_1                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
-#define L4_RRGB_2                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
-#define L4_RRGB_3                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
-#define L4_RRGB_4                                    COL_RGB,        COL_RGB,        COL_RGB,        COL_RGB
+#define LNAVG_RRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LNAVG_RRGB_1                    COL_DISABLE,    COL_NAVIG,      COL_NAVIG,      COL_DISABLE,    COL_DISABLE
+#define LNAVG_RRGB_2                    COL_NAVIG,      COL_NAVIG,      COL_NAVIG,      COL_NAVIG,      COL_NAVIG
+#define LNAVG_RRGB_3                    COL_DISABLE,    COL_NAVIG,      COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LNAVG_RRGB_4                                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
 
-#define L4_RTHM_0    KC_TRANSPARENT, KC_TRANSPARENT
-#define L4_RTHM_1    KC_TRANSPARENT
-#define L4_RTHM_2    TG(5),          KC_TRANSPARENT, KC_TRANSPARENT
+#define LNAVG_RTHM_0    KC_NO,          KC_NO
+#define LNAVG_RTHM_1    KC_NO
+#define LNAVG_RTHM_2    KC_NO,          KC_NO,          KC_NO
 
 /*
- * ===== Layer 5 : System ===========================================================================================================================
+ * ===== Layer Mouse (left) ====================================================================================================================================
  */
 
-#define L5_LROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_LROW_1    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_POWER,KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_LROW_2    KC_TRANSPARENT, KC_TRANSPARENT, SYSREQ_OOM,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_LROW_3    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, SYSREQ_SAK,     KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_LROW_4    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_LROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_LROW_1    KC_MS_ACCEL2,   KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_LROW_2    KC_MS_ACCEL1,   KC_MS_WH_LEFT,  KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT
+#define LMOUS_LROW_3    KC_MS_ACCEL0,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_LROW_4    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
 
-#define L5_LRGB_0                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
-#define L5_LRGB_1                    COL_NONE,       COL_NONE,       COL_NONE,       COL_SYSHW,      COL_NONE
-#define L5_LRGB_2                    COL_NONE,       COL_SYSSW,      COL_NONE,       COL_NONE,       COL_NONE
-#define L5_LRGB_3                    COL_NONE,       COL_NONE,       COL_NONE,       COL_SYSSW,      COL_NONE
-#define L5_LRGB_4                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+#define LMOUS_LRGB_0                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LMOUS_LRGB_1                    COL_DISABLE,    COL_DISABLE,    COL_MOUSE,      COL_MOUSEX,     COL_DISABLE
+#define LMOUS_LRGB_2                    COL_MOUSEX,     COL_MOUSE,      COL_MOUSE,      COL_MOUSE,      COL_MOUSEX
+#define LMOUS_LRGB_3                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_MOUSEX,     COL_DISABLE
+#define LMOUS_LRGB_4                    COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
 
-#define L5_LTHM_0                    KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_LTHM_1                                    KC_TRANSPARENT
-#define L5_LTHM_2    KC_TRANSPARENT, KC_TRANSPARENT, TT(5)
+#define LMOUS_LTHM_0                    KC_NO,          KC_MS_BTN5
+#define LMOUS_LTHM_1                                    KC_MS_BTN4
+#define LMOUS_LTHM_2    KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3
 
-#define L5_RROW_0    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_RROW_1    KC_TRANSPARENT, SYSREQ_SYNC,    KC_TRANSPARENT, KC_TRANSPARENT, RESET,          KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_RROW_2                    KC_TRANSPARENT, SYSREQ_KILL,    SYSREQ_TERM,    KC_TRANSPARENT, KC_SYSTEM_SLEEP,KC_TRANSPARENT
-#define L5_RROW_3    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_WAKE, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_RROW_4                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_RROW_0    LBASE_RROW_0
+#define LMOUS_RROW_1    LBASE_RROW_1
+#define LMOUS_RROW_2    LBASE_RROW_2
+#define LMOUS_RROW_3    LBASE_RROW_3
+#define LMOUS_RROW_4    LBASE_RROW_4
 
-#define L5_RRGB_0                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
-#define L5_RRGB_1                    COL_SYSSAFE,    COL_NONE,       COL_NONE,       COL_SYSHW,      COL_NONE
-#define L5_RRGB_2                    COL_NONE,       COL_SYSSW,      COL_SYSSW,      COL_NONE,       COL_SYSHW
-#define L5_RRGB_3                    COL_NONE,       COL_NONE,       COL_SYSSAFE,    COL_NONE,       COL_NONE
-#define L5_RRGB_4                                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+#define LMOUS_RRGB_0    LBASE_RRGB_0
+#define LMOUS_RRGB_1    LBASE_RRGB_1
+#define LMOUS_RRGB_2    LBASE_RRGB_2
+#define LMOUS_RRGB_3    LBASE_RRGB_3
+#define LMOUS_RRGB_4    LBASE_RRGB_4
 
-#define L5_RTHM_0    KC_TRANSPARENT, KC_TRANSPARENT
-#define L5_RTHM_1    KC_TRANSPARENT
-#define L5_RTHM_2    TG(5),          KC_TRANSPARENT, KC_TRANSPARENT
+#define LMOUS_RTHM_0    LBASE_RTHM_0
+#define LMOUS_RTHM_1    LBASE_RTHM_1
+#define LMOUS_RTHM_2    LBASE_RTHM_2
+
+/*
+ * ===== Layer Functions (right) ===============================================================================================================================
+ */
+
+#define LFUNC_LROW_0    LBASE_LROW_0
+#define LFUNC_LROW_1    LBASE_LROW_1
+#define LFUNC_LROW_2    LBASE_LROW_2
+#define LFUNC_LROW_3    LBASE_LROW_3
+#define LFUNC_LROW_4    LBASE_LROW_4
+
+#define LFUNC_LRGB_0    LBASE_LRGB_0
+#define LFUNC_LRGB_1    LBASE_LRGB_1
+#define LFUNC_LRGB_2    LBASE_LRGB_2
+#define LFUNC_LRGB_3    LBASE_LRGB_3
+#define LFUNC_LRGB_4    LBASE_LRGB_4
+
+#define LFUNC_LTHM_0    LBASE_LTHM_0
+#define LFUNC_LTHM_1    LBASE_LTHM_1
+#define LFUNC_LTHM_2    LBASE_LTHM_2
+
+#define LFUNC_RROW_0    KC_TRANSPARENT, RGB_TOG,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+#define LFUNC_RROW_1    KC_TRANSPARENT, RGB_SLD,        KC_F7,          KC_F8,          KC_F9,          KC_F12,         KC_TRANSPARENT
+#define LFUNC_RROW_2                    RGB_MOD,        KC_F1,          KC_F2,          KC_F3,          KC_F10,         KC_TRANSPARENT
+#define LFUNC_RROW_3    KC_TRANSPARENT, TOGGLE_LAYER_COLOR,KC_F4,       KC_F5,          KC_F6,          KC_F11,         KC_TRANSPARENT
+#define LFUNC_RROW_4                                    RGB_HUD,        RGB_VAD,        RGB_VAI,        RGB_HUI,        KC_TRANSPARENT
+
+#define LFUNC_RRGB_0                    COL_RGB,        COL_DISABLE,    COL_DISABLE,    COL_DISABLE,    COL_DISABLE
+#define LFUNC_RRGB_1                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
+#define LFUNC_RRGB_2                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
+#define LFUNC_RRGB_3                    COL_RGB,        COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION,   COL_FUNCTION
+#define LFUNC_RRGB_4                                    COL_RGB,        COL_RGB,        COL_RGB,        COL_RGB
+
+#define LFUNC_RTHM_0    KC_TRANSPARENT, KC_TRANSPARENT
+#define LFUNC_RTHM_1    KC_TRANSPARENT
+#define LFUNC_RTHM_2    TG(LSYST),      KC_TRANSPARENT, KC_TRANSPARENT
+
+/*
+ * ===== Layer System ==========================================================================================================================================
+ */
+
+#define LSYST_LROW_0    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+#define LSYST_LROW_1    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_SYSTEM_POWER,KC_NO,          KC_NO
+#define LSYST_LROW_2    KC_NO,          KC_NO,          SYSREQ_OOM,     KC_NO,          KC_NO,          KC_NO
+#define LSYST_LROW_3    KC_NO,          KC_NO,          KC_NO,          KC_NO,          SYSREQ_SAK,     KC_NO,          KC_NO
+#define LSYST_LROW_4    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+
+#define LSYST_LRGB_0                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+#define LSYST_LRGB_1                    COL_NONE,       COL_NONE,       COL_NONE,       COL_SYSHW,      COL_NONE
+#define LSYST_LRGB_2                    COL_NONE,       COL_SYSSW,      COL_NONE,       COL_NONE,       COL_NONE
+#define LSYST_LRGB_3                    COL_NONE,       COL_NONE,       COL_NONE,       COL_SYSSW,      COL_NONE
+#define LSYST_LRGB_4                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+
+#define LSYST_LTHM_0                    KC_NO,          KC_NO
+#define LSYST_LTHM_1                                    KC_NO
+#define LSYST_LTHM_2    KC_NO,          KC_NO,          TT(LSYST)
+
+#define LSYST_RROW_0    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+#define LSYST_RROW_1    KC_NO,          SYSREQ_SYNC,    KC_NO,          KC_NO,          RESET,          KC_NO,          KC_NO
+#define LSYST_RROW_2                    KC_NO,          SYSREQ_KILL,    SYSREQ_TERM,    KC_NO,          KC_SYSTEM_SLEEP,KC_NO
+#define LSYST_RROW_3    KC_NO,          KC_NO,          KC_NO,          KC_SYSTEM_WAKE, KC_NO,          KC_NO,          KC_NO
+#define LSYST_RROW_4                                    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO
+
+#define LSYST_RRGB_0                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+#define LSYST_RRGB_1                    COL_SYSSAFE,    COL_NONE,       COL_NONE,       COL_SYSHW,      COL_NONE
+#define LSYST_RRGB_2                    COL_NONE,       COL_SYSSW,      COL_SYSSW,      COL_NONE,       COL_SYSHW
+#define LSYST_RRGB_3                    COL_NONE,       COL_NONE,       COL_SYSSAFE,    COL_NONE,       COL_NONE
+#define LSYST_RRGB_4                                    COL_NONE,       COL_NONE,       COL_NONE,       COL_NONE
+
+#define LSYST_RTHM_0    KC_NO,          KC_NO
+#define LSYST_RTHM_1    KC_NO
+#define LSYST_RTHM_2    TG(LSYST),      KC_NO,          KC_NO
 
 
 #define MAKE_LAYOUT(...)    LAYOUT_ergodox_pretty(__VA_ARGS__)
@@ -317,69 +362,81 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[0] = MAKE_LAYOUT(
-		L0_LROW_0, L0_RROW_0,
-		L0_LROW_1, L0_RROW_1,
-		L0_LROW_2, L0_RROW_2,
-		L0_LROW_3, L0_RROW_3,
-		L0_LROW_4, L0_RROW_4,
-		L0_LTHM_0, L0_RTHM_0,
-		L0_LTHM_1, L0_RTHM_1,
-		L0_LTHM_2, L0_RTHM_2
+	[LBASE] = MAKE_LAYOUT(
+		LBASE_LROW_0, LBASE_RROW_0,
+		LBASE_LROW_1, LBASE_RROW_1,
+		LBASE_LROW_2, LBASE_RROW_2,
+		LBASE_LROW_3, LBASE_RROW_3,
+		LBASE_LROW_4, LBASE_RROW_4,
+		LBASE_LTHM_0, LBASE_RTHM_0,
+		LBASE_LTHM_1, LBASE_RTHM_1,
+		LBASE_LTHM_2, LBASE_RTHM_2
 	),
 
-	[1] = MAKE_LAYOUT(
-		L1_LROW_0, L1_RROW_0,
-		L1_LROW_1, L1_RROW_1,
-		L1_LROW_2, L1_RROW_2,
-		L1_LROW_3, L1_RROW_3,
-		L1_LROW_4, L1_RROW_4,
-		L1_LTHM_0, L1_RTHM_0,
-		L1_LTHM_1, L1_RTHM_1,
-		L1_LTHM_2, L1_RTHM_2
+	[LSYMB] = MAKE_LAYOUT(
+		LSYMB_LROW_0, LSYMB_RROW_0,
+		LSYMB_LROW_1, LSYMB_RROW_1,
+		LSYMB_LROW_2, LSYMB_RROW_2,
+		LSYMB_LROW_3, LSYMB_RROW_3,
+		LSYMB_LROW_4, LSYMB_RROW_4,
+		LSYMB_LTHM_0, LSYMB_RTHM_0,
+		LSYMB_LTHM_1, LSYMB_RTHM_1,
+		LSYMB_LTHM_2, LSYMB_RTHM_2
 	),
 
-	[2] = MAKE_LAYOUT(
-		L2_LROW_0, L2_RROW_0,
-		L2_LROW_1, L2_RROW_1,
-		L2_LROW_2, L2_RROW_2,
-		L2_LROW_3, L2_RROW_3,
-		L2_LROW_4, L2_RROW_4,
-		L2_LTHM_0, L2_RTHM_0,
-		L2_LTHM_1, L2_RTHM_1,
-		L2_LTHM_2, L2_RTHM_2
+	[LNUMB] = MAKE_LAYOUT(
+		LNUMB_LROW_0, LNUMB_RROW_0,
+		LNUMB_LROW_1, LNUMB_RROW_1,
+		LNUMB_LROW_2, LNUMB_RROW_2,
+		LNUMB_LROW_3, LNUMB_RROW_3,
+		LNUMB_LROW_4, LNUMB_RROW_4,
+		LNUMB_LTHM_0, LNUMB_RTHM_0,
+		LNUMB_LTHM_1, LNUMB_RTHM_1,
+		LNUMB_LTHM_2, LNUMB_RTHM_2
 	),
 
-	[3] = MAKE_LAYOUT(
-		L3_LROW_0, L3_RROW_0,
-		L3_LROW_1, L3_RROW_1,
-		L3_LROW_2, L3_RROW_2,
-		L3_LROW_3, L3_RROW_3,
-		L3_LROW_4, L3_RROW_4,
-		L3_LTHM_0, L3_RTHM_0,
-		L3_LTHM_1, L3_RTHM_1,
-		L3_LTHM_2, L3_RTHM_2
+	[LNAVG] = MAKE_LAYOUT(
+		LNAVG_LROW_0, LNAVG_RROW_0,
+		LNAVG_LROW_1, LNAVG_RROW_1,
+		LNAVG_LROW_2, LNAVG_RROW_2,
+		LNAVG_LROW_3, LNAVG_RROW_3,
+		LNAVG_LROW_4, LNAVG_RROW_4,
+		LNAVG_LTHM_0, LNAVG_RTHM_0,
+		LNAVG_LTHM_1, LNAVG_RTHM_1,
+		LNAVG_LTHM_2, LNAVG_RTHM_2
 	),
 
-	[4] = MAKE_LAYOUT(
-		L4_LROW_0, L4_RROW_0,
-		L4_LROW_1, L4_RROW_1,
-		L4_LROW_2, L4_RROW_2,
-		L4_LROW_3, L4_RROW_3,
-		L4_LROW_4, L4_RROW_4,
-		L4_LTHM_0, L4_RTHM_0,
-		L4_LTHM_1, L4_RTHM_1,
-		L4_LTHM_2, L4_RTHM_2
+	[LMOUS] = MAKE_LAYOUT(
+		LMOUS_LROW_0, LMOUS_RROW_0,
+		LMOUS_LROW_1, LMOUS_RROW_1,
+		LMOUS_LROW_2, LMOUS_RROW_2,
+		LMOUS_LROW_3, LMOUS_RROW_3,
+		LMOUS_LROW_4, LMOUS_RROW_4,
+		LMOUS_LTHM_0, LMOUS_RTHM_0,
+		LMOUS_LTHM_1, LMOUS_RTHM_1,
+		LMOUS_LTHM_2, LMOUS_RTHM_2
 	),
-	[5] = MAKE_LAYOUT(
-		L5_LROW_0, L5_RROW_0,
-		L5_LROW_1, L5_RROW_1,
-		L5_LROW_2, L5_RROW_2,
-		L5_LROW_3, L5_RROW_3,
-		L5_LROW_4, L5_RROW_4,
-		L5_LTHM_0, L5_RTHM_0,
-		L5_LTHM_1, L5_RTHM_1,
-		L5_LTHM_2, L5_RTHM_2
+
+	[LFUNC] = MAKE_LAYOUT(
+		LFUNC_LROW_0, LFUNC_RROW_0,
+		LFUNC_LROW_1, LFUNC_RROW_1,
+		LFUNC_LROW_2, LFUNC_RROW_2,
+		LFUNC_LROW_3, LFUNC_RROW_3,
+		LFUNC_LROW_4, LFUNC_RROW_4,
+		LFUNC_LTHM_0, LFUNC_RTHM_0,
+		LFUNC_LTHM_1, LFUNC_RTHM_1,
+		LFUNC_LTHM_2, LFUNC_RTHM_2
+	),
+
+	[LSYST] = MAKE_LAYOUT(
+		LSYST_LROW_0, LSYST_RROW_0,
+		LSYST_LROW_1, LSYST_RROW_1,
+		LSYST_LROW_2, LSYST_RROW_2,
+		LSYST_LROW_3, LSYST_RROW_3,
+		LSYST_LROW_4, LSYST_RROW_4,
+		LSYST_LTHM_0, LSYST_RTHM_0,
+		LSYST_LTHM_1, LSYST_RTHM_1,
+		LSYST_LTHM_2, LSYST_RTHM_2
 	)
 };
 
@@ -393,51 +450,60 @@ void keyboard_post_init_user(void) {
 
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-	[0] = MAKE_COLOR(
-		 L0_LRGB_0, L0_RRGB_0,
-		 L0_LRGB_1, L0_RRGB_1,
-		 L0_LRGB_2, L0_RRGB_2,
-		 L0_LRGB_3, L0_RRGB_3,
-		 L0_LRGB_4, L0_RRGB_4
-	),
-	[1] = MAKE_COLOR(
-		 L1_LRGB_0, L1_RRGB_0,
-		 L1_LRGB_1, L1_RRGB_1,
-		 L1_LRGB_2, L1_RRGB_2,
-		 L1_LRGB_3, L1_RRGB_3,
-		 L1_LRGB_4, L1_RRGB_4
+	[LBASE] = MAKE_COLOR(
+		 LBASE_LRGB_0, LBASE_RRGB_0,
+		 LBASE_LRGB_1, LBASE_RRGB_1,
+		 LBASE_LRGB_2, LBASE_RRGB_2,
+		 LBASE_LRGB_3, LBASE_RRGB_3,
+		 LBASE_LRGB_4, LBASE_RRGB_4
 	),
 
-	[2] = MAKE_COLOR(
-		 L2_LRGB_0, L2_RRGB_0,
-		 L2_LRGB_1, L2_RRGB_1,
-		 L2_LRGB_2, L2_RRGB_2,
-		 L2_LRGB_3, L2_RRGB_3,
-		 L2_LRGB_4, L2_RRGB_4
+	[LSYMB] = MAKE_COLOR(
+		 LSYMB_LRGB_0, LSYMB_RRGB_0,
+		 LSYMB_LRGB_1, LSYMB_RRGB_1,
+		 LSYMB_LRGB_2, LSYMB_RRGB_2,
+		 LSYMB_LRGB_3, LSYMB_RRGB_3,
+		 LSYMB_LRGB_4, LSYMB_RRGB_4
 	),
 
-	[3] = MAKE_COLOR(
-		 L3_LRGB_0, L3_RRGB_0,
-		 L3_LRGB_1, L3_RRGB_1,
-		 L3_LRGB_2, L3_RRGB_2,
-		 L3_LRGB_3, L3_RRGB_3,
-		 L3_LRGB_4, L3_RRGB_4
+	[LNUMB] = MAKE_COLOR(
+		 LNUMB_LRGB_0, LNUMB_RRGB_0,
+		 LNUMB_LRGB_1, LNUMB_RRGB_1,
+		 LNUMB_LRGB_2, LNUMB_RRGB_2,
+		 LNUMB_LRGB_3, LNUMB_RRGB_3,
+		 LNUMB_LRGB_4, LNUMB_RRGB_4
 	),
 
-	[4] = MAKE_COLOR(
-		 L4_LRGB_0, L4_RRGB_0,
-		 L4_LRGB_1, L4_RRGB_1,
-		 L4_LRGB_2, L4_RRGB_2,
-		 L4_LRGB_3, L4_RRGB_3,
-		 L4_LRGB_4, L4_RRGB_4
+	[LNAVG] = MAKE_COLOR(
+		 LNAVG_LRGB_0, LNAVG_RRGB_0,
+		 LNAVG_LRGB_1, LNAVG_RRGB_1,
+		 LNAVG_LRGB_2, LNAVG_RRGB_2,
+		 LNAVG_LRGB_3, LNAVG_RRGB_3,
+		 LNAVG_LRGB_4, LNAVG_RRGB_4
 	),
 
-	[5] = MAKE_COLOR(
-		 L5_LRGB_0, L5_RRGB_0,
-		 L5_LRGB_1, L5_RRGB_1,
-		 L5_LRGB_2, L5_RRGB_2,
-		 L5_LRGB_3, L5_RRGB_3,
-		 L5_LRGB_4, L5_RRGB_4
+	[LMOUS] = MAKE_COLOR(
+		 LMOUS_LRGB_0, LMOUS_RRGB_0,
+		 LMOUS_LRGB_1, LMOUS_RRGB_1,
+		 LMOUS_LRGB_2, LMOUS_RRGB_2,
+		 LMOUS_LRGB_3, LMOUS_RRGB_3,
+		 LMOUS_LRGB_4, LMOUS_RRGB_4
+	),
+
+	[LFUNC] = MAKE_COLOR(
+		 LFUNC_LRGB_0, LFUNC_RRGB_0,
+		 LFUNC_LRGB_1, LFUNC_RRGB_1,
+		 LFUNC_LRGB_2, LFUNC_RRGB_2,
+		 LFUNC_LRGB_3, LFUNC_RRGB_3,
+		 LFUNC_LRGB_4, LFUNC_RRGB_4
+	),
+
+	[LSYST] = MAKE_COLOR(
+		 LSYST_LRGB_0, LSYST_RRGB_0,
+		 LSYST_LRGB_1, LSYST_RRGB_1,
+		 LSYST_LRGB_2, LSYST_RRGB_2,
+		 LSYST_LRGB_3, LSYST_RRGB_3,
+		 LSYST_LRGB_4, LSYST_RRGB_4
 	)
 };
 
@@ -461,23 +527,26 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case 0:
-      set_layer_color(0);
+    case LBASE:
+      set_layer_color(LBASE);
       break;
-    case 1:
-      set_layer_color(1);
+    case LSYMB:
+      set_layer_color(LSYMB);
       break;
-    case 2:
-      set_layer_color(2);
+    case LNUMB:
+      set_layer_color(LNUMB);
       break;
-    case 3:
-      set_layer_color(3);
+    case LNAVG:
+      set_layer_color(LNAVG);
       break;
-    case 4:
-      set_layer_color(4);
+    case LMOUS:
+      set_layer_color(LMOUS);
       break;
-    case 5:
-      set_layer_color(5);
+    case LFUNC:
+      set_layer_color(LFUNC);
+      break;
+    case LSYST:
+      set_layer_color(LSYST);
       break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
